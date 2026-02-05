@@ -1,0 +1,41 @@
+# ---- Build output (CMake/VS) ----
+out/
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+CTestTestfile.cmake
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# CMake generated scripts (optional, safe)
+*.cmake
+
+# ---- Visual Studio ----
+.vs/
+*.user
+*.suo
+*.VC.db
+*.VC.VC.opendb
+*.VC.opendb
+*.VC.db-shm
+*.VC.db-wal
+*.log
+
+# ---- Binaries ----
+*.exe
+*.dll
+*.lib
+*.pdb
+*.obj
+*.ilk
+
+# ---- OS junk ----
+.DS_Store
+Thumbs.db
+
+# ---- Local DB/data ----
+data/*.db
+data/*.db-wal
+data/*.db-shm
