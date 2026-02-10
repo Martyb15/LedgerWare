@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(ledgerware
     src/main.cpp
-)
+ "include/cli.hpp" "src/cli.cpp" "src/commands.cpp")
 
 find_package(fmt CONFIG REQUIRED)
 find_package(unofficial-sqlite3 CONFIG REQUIRED)
@@ -17,3 +17,9 @@ target_link_libraries(ledgerware PRIVATE
 )
 
 target_include_directories(ledgerware PRIVATE include)
+
+target_sources(ledgerware PRIVATE
+    src/main.cpp
+    src/cli.cpp
+    src/commands.cpp
+)
