@@ -8,10 +8,12 @@
 namespace ledgerware::cli {
 
 	static bool starts_with(std::string_view s, std::string_view prefix) {
+		// function checks whether a token begins with a certain prefix. Example -- 
 		return s.size() >= prefix.size() && s.substr(0, prefix.size()) == prefix;
 	}
 
 	static bool is_help_token(std::string_view s) {
+		// is the user input attempting to ask for help
 		return (s == "help" || s == "--help" || s == "-h");
 		// possibly need to handle uppercase. 
 	}
