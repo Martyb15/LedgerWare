@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(ledgerware
     src/main.cpp
- "include/cli.hpp" "src/cli.cpp" "src/commands.cpp")
+ "include/cli.hpp" "src/cli.cpp" "src/commands.cpp" "src/Db.cpp")
 
 find_package(fmt CONFIG REQUIRED)
 find_package(unofficial-sqlite3 CONFIG REQUIRED)

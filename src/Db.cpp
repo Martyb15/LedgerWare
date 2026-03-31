@@ -40,5 +40,50 @@ namespace ledgerware::db {
 	}
 
 
+	// ----- Move Assignment ------
+	// Same idea, but 'this' might already own a connection. 
+	// We need to close our existing one before taking the new one. 
+	// Database a("one.db"); 
+	// Database b("two.db'); 
+	// a = std::move(b);      // close one.db, a now owns two.db
+
+	Database& Database::operator=(Database&& other) noexcept {
+		if (this != &other) {
+			if (db_) {
+				sqlite3_close(db_);
+			}
+			db_ = other.db_;
+			other.db_ = nullptr; 
+		}
+		return *this; 
+	}
+
+
+
+	// --- exec ---------
+	// Runs a SQL statement (or multimple separated by semicolons). 
+	// Throws on any error so you don't accidentally ignore failures. 
+
+	void Database::exec(std::string_view sql) {
+		char* err = nullptr; 
+		std::string sql_str(sql); 
+
+		int rc = sqlite3_exec(db_, sql_str.c_str(), nullptr, nullptr, &err); 
+
+		if (rc != SQLITE_OK) {
+			std::string msg = err ? err : "unknown SQLite error"; 
+			sqlite3_free(err);                        // SQLite allocated this, we must free it
+			throw std::runtime_error("SQL error: " + msg); 
+		}
+	}
+
+	// ------ raw ----------
+	// Returns the raw ponter for advanced SQLite API calls. 
+	// The Database objects still owns it - don't close or free it. 
 	
-}
+	sqlite3* Database::raw() noexcept {
+		return db_; 
+	}
+
+	
+} 
