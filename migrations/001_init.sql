@@ -39,4 +39,4 @@ CREATE TABLE IF NOT EXISTS stock_snapshot (
     PRIMARY KEY(product_id, location_id)
 );
 
-CREATE INDEX IF NOT EXISTS idx_events_products_ts ON stock_events(product_id, ts);
+CREATE INDEX IF NOT EXISTS idx_events_products_ts ON stock_event(product_id, ts);
