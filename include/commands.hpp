@@ -10,4 +10,4 @@ namespace ledgerware::commands {
 	int stock(const ledgerware::cli::Command& cmd); 
 
 
-}// namespace ladgerware::commands
+}// namespace ledgerware::commands
