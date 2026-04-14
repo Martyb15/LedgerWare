@@ -95,7 +95,7 @@ namespace ledgerware::cli {
 		}
 
 		out.ok = true;
-		out.exit_code = (out.command.type == CommandType::Help) ? 0 : 0;
+		out.exit_code = 0;
 		return out;
 	}
 
