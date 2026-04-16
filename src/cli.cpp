@@ -7,6 +7,7 @@
 
 namespace ledgerware::cli {
 
+	// 
 	static bool starts_with(std::string_view s, std::string_view prefix) {
 		// function checks whether a token begins with a certain prefix. Example -- 
 		return s.size() >= prefix.size() && s.substr(0, prefix.size()) == prefix;
@@ -124,3 +125,24 @@ Examples:
 	}
 
 }// namespace ladgerware::cli
+
+
+
+
+
+
+// ------------------------------------ string_view --------------------------------------------------|
+// string_view is a lightweight, non-owning "window" into a string.                                   |
+// It doesn't allocate memory - it just points at characters that                                     |
+// already exist somewhere (like in argv).                                                            |
+//                                                                                                    |
+// Why using it here makes sense                                                                      |
+// When parsing CLI args, we do a LOT of comparisons and substring                                    |
+// operations. With std::string, every substr() creates a new heap                                    |
+// allocation. With string_view, substr() just adjusts the window                                     |
+// - zero allocations, much faster.                                                                   |
+//                                                                                                    |
+// The tradeoff: you must be sure the underlying data outlives                                        |
+// the string_view. Since argv lives for the entire program,                                          |
+// this is safe here.                                                                                 |
+// ---------------------------------------------------------------------------------------------------|

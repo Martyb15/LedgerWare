@@ -14,7 +14,7 @@ namespace ledgerware::db {
 			db_ = nullptr; 
 			throw std::runtime_error("Failed to open database: " + msg); 
 		}
-		exec("PRAGMA foreign_keys = ON"); 
+		exec("PRAGMA foreign_keys = ON;"); 
 	}
 
 	// ------- Destructor -----------------

@@ -51,7 +51,7 @@ namespace ledgerware::db {
 		// Database a('ledger.db'); 
 		// Database b = a;         <- COMPILE ERROR (this is what we want)
 		Database(const Database&) = delete; 
-		Database& operator = (const Database&) = delete; 
+		Database& operator=(const Database&) = delete; 
 
 		// --- Move operations: transfer ownership ---- 
 		// "Moving" means one object hands its guts to another. 
@@ -85,4 +85,4 @@ namespace ledgerware::db {
 
 	};
 
-} 
+} // namespace ledgerware::db 
