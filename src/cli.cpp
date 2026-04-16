@@ -70,7 +70,7 @@ namespace ledgerware::cli {
 			std::string_view token = args[i];
 
 			if (!starts_with(token, "--")) {
-				return make_error("Unexpected arguement: " + std::string(token), 2);
+				return make_error("Unexpected argument: " + std::string(token), 2);
 			}
 			// ? std::string_view allows us to efficiently extract the key and value without creating new string copies (allocations). 
 			// ? npos is th largest possible number that a computer can store in a size_t variable 18,446,744,709,551,615 or sometimes it is -1. 
@@ -96,7 +96,7 @@ namespace ledgerware::cli {
 		}
 
 		out.ok = true;
-		out.exit_code = (out.command.type == CommandType::Help) ? 0 : 0;
+		out.exit_code = 0;
 		return out;
 	}
 
@@ -124,10 +124,8 @@ Examples:
 )";
 	}
 
+
 }// namespace ladgerware::cli
-
-
-
 
 
 
@@ -146,3 +144,6 @@ Examples:
 // the string_view. Since argv lives for the entire program,                                          |
 // this is safe here.                                                                                 |
 // ---------------------------------------------------------------------------------------------------|
+
+// namespace ledgerware::cli
+
