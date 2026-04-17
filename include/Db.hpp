@@ -12,7 +12,8 @@ namespace ledgerware::db {
 // The idea: 
 //		- The constructor acquires the resource (opens the DB) 
 //	    - The Destructor releases the resource (closes the DB) 
-//      - You never manually call sqlite3_close, it happens automaticallly when the database object goes out of scope. 
+//      - You never manually call sqlite3_close, it happens 
+//        automaticallly when the database object goes out of scope. 
 //
 // Why it matters: 
 //      - If an exception is thrown, the destructor still runs -> no leak
@@ -22,7 +23,8 @@ namespace ledgerware::db {
 // This class is "move-only": 
 //	    - You CAN transfer ownership: Database b = std:: move(a); 
 // 	    - Now b owns the connection and a is empty. 
-// 	    - You CANNOT copy: Database b = a; <- compiler error because two objects closing the same pointer = crash
+// 	    - You CANNOT copy: Database b = a; <- compiler error because two 
+//        objects closing the same pointer = crash
 // 
 //
 //
